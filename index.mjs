@@ -1,8 +1,15 @@
 import express from 'express';
+
 import cookieParser from 'cookie-parser';
 import methodOverride from 'method-override';
 
-import bindRoutes from './routes.mjs';
+import drummerRouter from './routers/drummerRouter.js';
+import reservationRouter from './routers/reservationRouter.js';
+
+import DrummerController from './controllers/drummers.mjs';
+import ReservationController from './controllers/reservations.mjs';
+
+import db from './models/index.mjs';
 
 // Initialise Express instance
 const app = express();
@@ -17,8 +24,11 @@ app.use(methodOverride('_method'));
 // Expose the files stored in the public folder
 app.use(express.static('public'));
 
-// Bind route definitions to the Express application
-bindRoutes(app);
+const drummerController = new DrummerController(db);
+const reservationController = new ReservationController(db);
+
+app.use('/drummer', drummerRouter(drummerController));
+app.use('/reservation', reservationRouter(reservationController));
 
 // Set Express to listen on the given port
 const PORT = process.env.PORT || 3004;
