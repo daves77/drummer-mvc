@@ -31,6 +31,13 @@ module.exports = {
         allowNull: true,
         type: Sequelize.DATE,
       },
+      drummer_id: {
+        type: Sequelize.INTEGER,
+        reference: {
+          model: 'drummers',
+          key: 'id',
+        },
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -13,7 +13,7 @@ module.exports = {
       },
     ];
 
-    const drummers = await queryInterface.bulkInsert('drummers',
+    let drummers = await queryInterface.bulkInsert('drummers',
       drummersList, { returning: true });
   },
 

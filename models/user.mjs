@@ -1,21 +1,17 @@
-export default function initReservationModel(sequelize, DataTypes) {
+export default function initUserModel(sequelize, DataTypes) {
   return sequelize.define(
-    'reservation', {
+    'user', {
       id: {
         primaryKey: true,
-        allowNull: false,
         autoIncrement: true,
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
-      date: {
-        type: DataTypes.DATE,
+      email: {
+        type: DataTypes.TEXT,
       },
-      drummerId: {
-        type: DataTypes.INTEGER,
-        reference: {
-          model: 'drummers',
-          key: 'id',
-        },
+      passwordHash: {
+        type: DataTypes.TEXT,
       },
       createdAt: {
         allowNull: false,

@@ -1,21 +1,15 @@
-export default function initReservationModel(sequelize, DataTypes) {
+export default function initEquipmentModel(sequelize, DataTypes) {
   return sequelize.define(
-    'reservation', {
+    'equipment',
+    {
       id: {
         primaryKey: true,
-        allowNull: false,
         autoIncrement: true,
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
-      date: {
-        type: DataTypes.DATE,
-      },
-      drummerId: {
-        type: DataTypes.INTEGER,
-        reference: {
-          model: 'drummers',
-          key: 'id',
-        },
+      name: {
+        type: DataTypes.TEXT,
       },
       createdAt: {
         allowNull: false,
