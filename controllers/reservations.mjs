@@ -1,3 +1,5 @@
+import db from '../models/index.mjs';
+
 export default class ReservationController {
   constructor(db) {
     this.db = db;
@@ -10,11 +12,14 @@ export default class ReservationController {
 
   async getReservationForm(req, res) {
     try {
-      const drummer = await this.db.Drummer.findOne({
-        where: {
-          id: req.params.id,
-        },
+      const drummer = await this.db.Drummer.findByPk(req.params.id, {
+        include: [
+          {
+            model: db.Equipment,
+          },
+        ],
       });
+      console.log(drummer.dataValues);
       return res.render('drummer-reservation', { drummer });
     } catch (err) {
       console.log(err);

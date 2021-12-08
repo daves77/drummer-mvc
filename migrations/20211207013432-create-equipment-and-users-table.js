@@ -26,36 +26,36 @@ module.exports = {
       },
     });
 
-    await queryInterface.createTable('drummers_equipments', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
-      drummer_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'drummers',
-          key: 'id',
-        },
-      },
-      equipment_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'equipments',
-          key: 'id',
-        },
-      },
-      created_at: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updated_at: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-    });
+    // await queryInterface.createTable('drummer_equipment', {
+    //   id: {
+    //     allowNull: false,
+    //     autoIncrement: true,
+    //     primaryKey: true,
+    //     type: Sequelize.INTEGER,
+    //   },
+    //   drummer_id: {
+    //     type: Sequelize.INTEGER,
+    //     references: {
+    //       model: 'drummers',
+    //       key: 'id',
+    //     },
+    //   },
+    //   equipment_id: {
+    //     type: Sequelize.INTEGER,
+    //     references: {
+    //       model: 'equipments',
+    //       key: 'id',
+    //     },
+    //   },
+    //   created_at: {
+    //     allowNull: false,
+    //     type: Sequelize.DATE,
+    //   },
+    //   updated_at: {
+    //     allowNull: false,
+    //     type: Sequelize.DATE,
+    //   },
+    // });
 
     await queryInterface.createTable('users', {
       id: {
@@ -83,8 +83,8 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.removeColumn('drummers', 'price');
-    await queryInterface.dropTable('equipment');
-    await queryInterface.dropTable('drummers_equipments');
+    await queryInterface.dropTable('equipments');
+    // await queryInterface.dropTable('drummer_equipment');
     await queryInterface.dropTable('users');
   },
 };

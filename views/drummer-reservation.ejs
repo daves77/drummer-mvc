@@ -10,6 +10,15 @@
 
 <body>
   <h1>Reserve <%= drummer.name %> for a lesson
+      <h2>Instruments</h2>
+      <ul>
+
+        <% drummer.equipment.forEach(el=> { %>
+          <li>
+            <%=el.name %>
+          </li>
+          <% }) %>
+      </ul>
   </h1>
   <form action="/reservation/<%= drummer.id %>" method="POST">
     <input type="datetime-local" name="date">

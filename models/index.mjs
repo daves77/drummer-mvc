@@ -25,8 +25,8 @@ db.Drummer.hasMany(db.Reservation);
 db.Reservation.belongsTo(db.Drummer);
 
 // many drummers to many equipments
-db.Drummer.belongsToMany(db.Equipment, { through: 'drummers_equipment' });
-db.Equipment.belongsToMany(db.Drummer, { through: 'drummers_equipment' });
+db.Drummer.belongsToMany(db.Equipment, { through: 'drummer_equipments' });
+db.Equipment.belongsToMany(db.Drummer, { through: 'drummer_equipments' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

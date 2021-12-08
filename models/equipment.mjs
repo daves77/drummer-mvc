@@ -22,6 +22,7 @@ export default function initEquipmentModel(sequelize, DataTypes) {
     },
     {
       underscored: true,
+      tableName: 'equipments',
     },
   );
 }

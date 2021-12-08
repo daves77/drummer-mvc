@@ -21,6 +21,7 @@ export default function initDrummerModel(sequelize, DataTypes) {
     },
     {
       underscored: true,
+      tableName: 'drummers',
     },
   );
 }
